@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'deareye/css/mdui.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'deareye/css/baka-users.css' %}" />
+    <link rel="stylesheet" href="{% static 'deareye/css/baka-dark.css' %}" />
+    <link rel="icon" href="{% static 'deareye/img/Eye_of_Ender.webp'%}">
+    <!-- 思源宋 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+    <!-- EB Garamond -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+</head>
+
+
+<body class="mdui-theme-primary-deep-purple mdui-theme-accent-deep-purple mdui-loaded mdui-drawer-body-left">
+    <div id="background"></div>
+    <header id="baka-header" class="mdui-appbar">
+        <div class="mdui-toolbar mdui-color-theme">
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#baka-sidebar'}">
+                <i class="mdui-icon material-icons">menu</i>
+            </a>
+            <a href="{{ site_domain }}" class="mdui-typo-headline">{{ site_name }}</a>
+            <div class="mdui-toolbar-spacer"></div>
+
+            <a id="dark-theme-switch" onclick="BakaMethod.darkMode()" href="javascript:;" class="mdui-btn mdui-btn-icon"
+                mdui-tooltip="{content: '切换深色'}">
+                <i class="mdui-icon material-icons">brightness_high</i>
+            </a>
+        </div>
+    </header>

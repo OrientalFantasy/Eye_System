@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Eye System</title>
+    <link rel="icon" href="{% static 'deareye/img/Eye_of_Ender.webp'%}" />
+    <link id="static_domain" href="{% static '' %}">
+    <link
+      rel="stylesheet"
+      href="{% static 'deareye/index/css/baka-index.css' %}"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+  </head>
+  <body>
+    <div id="background">
+      <div
+        class="background"
+        style="
+          background-image: url('{% static 'deareye/index/images/background.png' %}');
+        "
+      ></div>
+    </div>
+    <div id="baka-index-app">
+      {% verbatim baka_main %}
+      <main id="baka-main">
+        <div class="index-content-box">
+          <div class="index-title-box" ref="TitleBox">
+            <div class="index-title">
+              <span
+                v-if="disFor === true || disFor === false"
+                v-for="(item, i) in titleArr"
+                :class="animation[i] != undefined ? animation[i] : ''"
+                v-html="item"
+                :key="i"
+              >
+                {{ item }}
+              </span>
+            </div>
+
+            <div class="index-sub-title" ref="SubTitle">
+              <span v-if="hiddenSubTitle === true">{{ subtitle }}</span>
+
+              <div class="sub-title-box" v-if="hiddenSubTitle === false">
+                <span
+                  v-if="disFor === true || disFor === false"
+                  v-for="(item, i) in subTitleArr"
+                  :class="subTitleAnimation[i] != undefined ? subTitleAnimation[i] : ''"
+                  v-html="item"
+                  :key="i"
+                >
+                  {{ item }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="index-divider" ref="Divider"></div>
+
+          <div class="index-buttons" ref="Buttons">
+            <div
+              v-for="(item, key) in buttons"
+              :key="key"
+              :class="animationButtons[key] != undefined ? animationButtons[key] : ''"
+            >
+              <a
+                :href="item.link"
+                class="buttons-btn"
+                :target="item.isBlank != undefined && item.isBlank ? '_target' : '_self'"
+              >
+                <span class="btn-text">{{item.name}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+      {% endverbatim baka_main %}
+
+      <footer id="baka-footer">
+        Copyright © 2022 Eye 学生信息管理系统 &nbsp;&nbsp;/&nbsp;&nbsp;
+        <a href="https://beian.miit.gov.cn/" target="_blank"
+          >滇ICP备 19007022号-1</a
+        > &nbsp;&nbsp;/&nbsp;&nbsp;Background:&nbsp;&nbsp;<a
+          href="https://www.minecraft.net/"
+          target="_blank"
+          >Minecraft/Enderman</a>
+
+        <div style="margin-left: auto"></div>
+
+        <div class="site-icon" @click="displayBGText">
+          <img src="{% static 'deareye/img/Eye_of_Ender.webp'%}" />
+        </div>
+
+        <div class="enderman">
+          <div class="text">不要看我的眼睛！</div>
+          <div class="enderman-screaming" style="background-image: url('{% static 'deareye/index/images/Enderman_Screaming.webp'%}')" data-audio-scream="{% static 'deareye/index/audio/endermen_scream.wav'%}" data-audio-stare="{% static 'deareye/index/audio/endermen_stare.wav'%}">
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      const SITE_TITLE = "Eye System";
+      const SITE_SUBTITLE =
+        "I am looking at you, but please don't look into my eyes...";
+      const SITE_LINKS = [
+        {
+          name: "登录",
+          link: "./login",
+          icon: "",
+          isBlank: false,
+        },
+        {
+          name: "注册",
+          link: "./register",
+          icon: "",
+          isBlank: false,
+        },
+      ];
+    </script>
+    <script
+      type="text/javascript"
+      src="{% static 'deareye/index/js/vue-typer.min.js'%}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'deareye/index/js/vue.min.js'%}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'deareye/index/js/baka-index.js'%}"
+    ></script>
+  </body>
+</html>

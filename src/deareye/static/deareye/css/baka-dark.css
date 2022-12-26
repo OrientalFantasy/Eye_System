@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.baka-theme-dark #background::after {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.baka-theme-dark #baka-header {
+  background-color: transparent;
+}
+
+.baka-theme-dark #baka-header i {
+  color: #ffffff;
+}
+
+.baka-theme-dark #baka-sidebar,
+.baka-theme-dark #baka-sidebar i {
+  background-color: rgba(42, 42, 42, 0.8);
+  color: #ffffff !important;
+}
+
+.baka-theme-dark .login-card {
+  background-color: rgba(42, 42, 42, 1);
+}
+
+.baka-theme-dark .login-card:hover {
+  background-color: rgba(42, 42, 42, 0.8);
+}
+
+.baka-theme-dark .cute-icon-header .cute-title {
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .baka-theme-dark #baka-sidebar {
+    background-color: rgba(42, 42, 42, 1);
+  }
+}

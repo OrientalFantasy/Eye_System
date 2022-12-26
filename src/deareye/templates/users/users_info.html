@@ -1,0 +1,79 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="cute-table-title">
+            信息查看
+        </div>
+        <div class="cute-table-title-card">
+            <div class="mdui-table-fluid mdui-container">
+                <table class="mdui-table mdui-table-hoverable">
+                    <tr>
+                        <td>学号</td>
+                        <td>{{ user_info.student_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{{ user_info.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>昵称</td>
+                        <td>{{ user_info.nick_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>邮箱</td>
+                    <td>{{ user_info.mail }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-button mdui-text-right">
+                <a
+                class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                href="{{ site_domain }}/users/info?username={{ user_info.user_name }}&edit=1"
+                >修改</a>
+            </div>
+            {% if user_info.rank == 1 or user_info.rank == 2%}
+            <h1>用户查找：</h1>
+            <div>
+                <form method="GET">
+                    <div class="mdui-textfield" style="display: flex;">
+                        <font style="font-size: 25px;">用户名：</font>
+                        <input type="hidden" name="edit" value="1">
+                        <input
+                        name="username"
+                        class="mdui-textfield-input"
+                        type="text"
+                        value=""
+                        style="width: calc(100% - 200px);"
+                        />
+                        <input
+                        type="submit"
+                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                        value="查找"
+                        style="float: right; margin-left: 10px;"
+                        />
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form method="GET">
+                    <div class="mdui-textfield" style="display: flex;">
+                        <font style="font-size: 25px;">学工号：</font>
+                        <input type="hidden" name="edit" value="1">
+                        <input
+                        name="student_id"
+                        class="mdui-textfield-input"
+                        type="text"
+                        value=""
+                        style="width: calc(100% - 200px);"/>
+                        <input
+                        type="submit"
+                        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                        value="查找"
+                        style="float: right; margin-left: 10px;"
+                        />
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+{% include "users/inc/footer.html" %}

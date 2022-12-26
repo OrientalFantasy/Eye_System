@@ -1,0 +1,37 @@
+{% load static %}
+<html>
+  <head>
+    <title>500 Server Error</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgba(230, 214, 241, 0.6);
+      }
+      .cat-img {
+        text-align: center;
+        width: 400px;
+        height: 350px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .tips {
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: rgba(244, 115, 119, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cat-img">
+      <img src="{% static "deareye/img/nyancat.gif" %}" />
+      <p class="tips">芙雾器似乎失去了响应。</p>
+      <p class="tips">500 Server Error.</p>
+    </div>
+  </body>
+</html>

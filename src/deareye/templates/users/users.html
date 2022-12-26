@@ -1,0 +1,25 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="mdui-card login-card">
+            <div class="cute-icon-header">
+                <div class="cute-title">Welcome to the {{ site_name }}.</div>
+                <img src="{% static 'deareye/img/Ender_Dragon.webp' %}" alt="欸嘿" />
+                </div>
+            </div>
+            <div class="hitokoto">
+                <span id="hitokoto_text">少女祈祷中...</span>
+            </div>
+        </div>
+    </main>
+    <script>
+        fetch('https://v1.hitokoto.cn/?c=i&charset=utf-8')
+          .then(response => response.json())
+          .then(data => {
+            const hitokoto = document.getElementById('hitokoto_text')
+            //hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+            hitokoto.innerText = data.hitokoto
+          })
+          .catch(console.error)
+      </script>
+    <script type="text/javascript">const NOW_METHOD = "login";</script>
+{% include "users/inc/footer.html" %}

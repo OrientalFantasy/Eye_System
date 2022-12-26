@@ -1,0 +1,73 @@
+{% load static %} {% include "inc/header.html" %} {% include "inc/sidebar.html" %}
+<main id="baka-main" class="baka-page-center">
+  <div class="mdui-card login-card">
+    <div class="cute-icon-header">
+      <div class="cute-title">注册</div>
+      <img src="{% static 'deareye/img/Enderman_Screaming.webp' %}" alt="不要看我的眼睛！" />
+    </div>
+    <div class="login-card-content">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">昵称</label>
+        <input class="mdui-textfield-input" name="nickname" type="text" />
+      </div>
+
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        {% csrf_token %}
+        {{ register_form.captcha.label_tag }}
+            {{ register_form.captcha }}
+        <label class="mdui-textfield-label">用户名</label>
+        <input class="mdui-textfield-input" name="username" type="text" />
+      </div>
+
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">电子邮件</label>
+        <input class="mdui-textfield-input" name="mail" type="email" />
+      </div>
+
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">密码</label>
+        <input class="mdui-textfield-input" name="password" type="password" />
+      </div>
+
+      <div class="captcha-input">
+        <div class="mdui-textfield mdui-textfield-floating-label">
+          <label class="mdui-textfield-label">验证码</label>
+          <input class="mdui-textfield-input" name="code" type="text"/>
+          <input type="hidden" name="hashkey" value="" />
+        </div>
+
+        <div
+          class="captcha-iamge"
+          onclick="BakaMethod.refreshCaptcha()"
+          mdui-tooltip="{content: '刷新验证码'}"
+        >
+          <img src="" alt="验证码" />
+          <div class="load-spinner">
+            <div class="mdui-spinner"></div>
+            <div class="err-retry">
+              <i class="mdui-icon material-icons">refresh</i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-box">
+        <button
+          class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+          onclick="BakaMethod.register()"
+          id="register-btn"
+          disabled
+        >
+          注册
+        </button>
+        <div class="links-box mdui-typo">
+          已经有账号了？点击 <a href="/login">登录</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script type="text/javascript">
+  const NOW_METHOD = "register";
+</script>
+{% include "inc/footer.html" %}

@@ -1,0 +1,29 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="cute-table-title">
+            学生名册导出
+        </div>
+        <div class="cute-table-title-card" style="margin-top: 150px;">
+            <form action="{{ site_domain }}/users/sexport" method="POST">
+                {% csrf_token %}
+                <font style="font-size: 25px;">选择班级：</font>
+                <select class="mdui-select" name="class_name" style="width: 220px;font-size: 18px;">
+                    <option selected>请选择班级</option>
+                    {% for i in teacher_class_list %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <a
+                class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                style="margin-left: 25px;"
+                href="javascript:window.history.back(-1);"
+                >返回</a>
+                <input
+                class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                type="submit"
+                value="导出"
+                />
+            </form>
+        </div>
+    </main>
+{% include "users/inc/footer.html" %}

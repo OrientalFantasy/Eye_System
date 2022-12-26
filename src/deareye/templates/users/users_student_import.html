@@ -1,0 +1,28 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="cute-table-title">
+            批量导入学生信息
+        </div>
+        <div class="cute-table-title-card">
+            <div style="margin-top: 80px;">
+                <form action="{{ site_domain }}/users/simport" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <font style="font-size: 20px;">EXCEL工作簿文件：</font>
+                    <input name="student_table" type="file" />
+                    <input
+                    class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                    type="submit"
+                    value="导入"
+                    />
+                </form>
+            </div>
+            <p style="font-size: 20px; margin-top: 50px;">说明：点击下载按钮下载模板，根据模板填写学生名单，选择工作簿文件再点击导入即可批量添加学生（每个班一个EXCEL工作簿文件）。<font style="color: red;">温馨提示：每个班一个工作簿文件，如果需要导入多个班级，请分多个工作簿文件，多次导入。</font></p>
+            <div style="margin-bottom: 50px;">
+                <font style="font-size: 20px;">点击下载模板：</font>
+                <a
+                class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                href="{{ site_domain }}/download/student">学生批量导入模板文件</a>
+            </div>
+        </div>
+    </main>
+{% include "users/inc/footer.html" %}

@@ -1,0 +1,78 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="cute-table-title">
+            信息修改
+        </div>
+        <div class="cute-table-title-card">
+            <form method="post">
+                <div class="mdui-textfield">
+                    {% csrf_token %}
+                    <label class="mdui-textfield-label">学号</label>
+                    <input
+                    name="student_id"
+                    class="mdui-textfield-input"
+                    type="text"
+                    value="{{ user_info.student_id }}"
+                    {% if user_info.rank == 0 %}
+                        disabled
+                    {% endif %}
+                    />
+                </div>
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">姓名</label>
+                    <input
+                    name="name"
+                    class="mdui-textfield-input"
+                    type="text"
+                    value="{{ user_info.name }}"
+                    {% if user_info.rank == 0 %}
+                        disabled
+                    {% endif %}
+                    />
+                </div>
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">昵称</label>
+                    <input name="nickname" class="mdui-textfield-input" type="text" value="{{ user_info.nick_name }}"/>
+                </div>
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">邮箱</label>
+                    <input name="mail" class="mdui-textfield-input" type="text" value="{{ user_info.mail }}"/>
+                </div>
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">密码（为空则不修改，<font style="color: red;">密码必须满足英文、数字、特殊符号中任意两种组合</font>）</label>
+                    <input name="password" class="mdui-textfield-input" type="text" value=""/>
+                </div>
+                {% if user_info.rank == 2 %}
+                权限等级：
+                <select class="mdui-select" name="rank">
+                    <option value="None" selected>不修改</option>
+                    <option value="0">学生</option>
+                    <option value="1">老师</option>
+                    <option value="2">管理员</option>
+                </select>
+                {% endif %}
+                {% if user_info.rank == 2 %}
+                <div class="card-button mdui-text-left">
+                    <font style="font-size: 20px; color: red;">危险操作：
+                        <a
+                        class="mdui-btn mdui-btn-raised mdui-ripple"
+                        href="{{ site_domain }}/users/info?username={{ user_info.user_name }}&edit=1&delete=1"
+                        >删除用户</a>
+                    </font>
+                </div>
+                {% endif %}
+                <div class="card-button mdui-text-right">
+                    <a
+                    class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                    href="javascript:window.history.back(-1);"
+                    >返回</a>
+                    <input
+                    type="submit"
+                    class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                    value="提交"
+                    />
+                </div>
+            </form>
+        </div>
+    </main>
+{% include "users/inc/footer.html" %}

@@ -1,0 +1,58 @@
+<div id="baka-sidebar" class="mdui-drawer mdui-drawer-open">
+  <ul class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="{{ site_domain }}/users/info">
+      <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
+        <div class="mdui-list-item-content">信息查看</div>
+      </li>
+    </a>
+
+    <a href="{{ site_domain }}/users/timetable">
+      <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">grid_on</i>
+        <div class="mdui-list-item-content">我的课表</div>
+      </li>
+    </a>
+    {% if user_info.rank == 1 %}
+    <li class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">school</i>
+        <div class="mdui-list-item-content">教师菜单</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        <a href="{{ site_domain }}/users/student_list">
+          <li class="mdui-list-item mdui-ripple">学生列表</li>
+        </a>
+        <a href="{{ site_domain }}/users/simport">
+          <li class="mdui-list-item mdui-ripple">学生导入</li>
+        </a>
+        <a href="{{ site_domain }}/users/sexport">
+        <li class="mdui-list-item mdui-ripple">学生名册导出</li>
+        </a>
+      </ul>
+    </li>
+    {% endif %}
+    {% if user_info.rank == 2 %}
+    <li class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">security</i>
+        <div class="mdui-list-item-content">管理员菜单</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        <a href="{{ site_domain }}/users/list">
+          <li class="mdui-list-item mdui-ripple">用户列表</li>
+        </a>
+      </ul>
+    </li>
+    {% endif %}
+
+    <a href="{{ site_domain }}/logout">
+      <li class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">exit_to_app</i>
+        <div class="mdui-list-item-content">注销登录</div>
+      </li>
+    </a>
+  </ul>
+</div>

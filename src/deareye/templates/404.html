@@ -1,0 +1,28 @@
+{% load static %}
+<html>
+  <head>
+    <title>404 Not Found</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgba(227, 242, 253, 0.6);
+      }
+      .cat-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tips {
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cat-img"><img src="{% static "deareye/img/0.gif" %}" /></div>
+    <p class="tips">噢不！这几只猫猫带走了您访问的资源！</p>
+    <p class="tips">404 Not Found.</p>
+  </body>
+</html>

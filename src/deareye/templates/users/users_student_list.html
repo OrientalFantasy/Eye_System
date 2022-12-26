@@ -1,0 +1,30 @@
+{% load static %} {% include "users/inc/header.html" %} {% include "users/inc/sidebar.html" %}
+    <main id="baka-main" class="baka-page-center">
+        <div class="cute-table-title">
+            学生列表
+        </div>
+        <div class="cute-stutable-card" style="max-height: 500px; overflow-y: auto;overflow-x: hidden;">
+            <div class="mdui-table-fluid">
+                <table class="mdui-table mdui-table-hoverable">
+                    <tr>
+                        <th>班级</th>
+                        <th>姓名</th>
+                        <th>学号</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for x,y,z in students_info %}
+                    <tr>
+                        <td>{{ z }}</td>
+                        <td>{{ x }}</td>
+                        <td>{{ y }}</td>
+                        <td><a
+                            class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+                            href="{{ site_domain }}/users/info?student_id={{ y }}&edit=1"
+                            >修改</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </main>
+{% include "users/inc/footer.html" %}
